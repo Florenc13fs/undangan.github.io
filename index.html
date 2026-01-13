@@ -1,269 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fendri & Florencia Wedding</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Wedding Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Hurricane&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- ICON -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#c8a24d;
+  --dark:#1c1c1c;
+}
+
+*{box-sizing:border-box}
 body{
-  font-family:'Montserrat',sans-serif;
-  background:#faf7f4;
+  margin:0;
+  font-family:'Playfair Display',serif;
+  background:#faf8f4;
   color:#333;
-  text-align:center;
   overflow-x:hidden;
 }
 
-/* OPENING */
-.opening{
-  position:fixed;
-  inset:0;
-  background:url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee") center/cover no-repeat;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:10;
+h1,h2,h3{
+  font-family:'Hurricane',cursive;
+  color:var(--gold);
+  font-weight:400;
 }
-.opening::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:rgba(255,255,255,.78);
-  z-index:1;
-  pointer-events:none; /* FIX TOTAL */
+
+section{
+  padding:60px 20px;
+  text-align:center;
+  max-width:900px;
+  margin:auto;
 }
-.opening-box{
-  position:relative;
-  z-index:2;
-  padding:40px;
+
+.card{
+  background:#fff;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  margin:30px 0;
 }
-.opening p{
-  letter-spacing:4px;
-  font-size:12px;
-}
-.opening h1{
-  font-family:'Great Vibes',cursive;
-  font-size:52px;
-  margin:10px 0;
-}
-#guestName{
-  margin:14px 0 28px;
-  font-size:14px;
-}
+
 .btn{
-  padding:13px 36px;
-  border:none;
-  border-radius:40px;
-  background:#8c9a7b;
+  display:inline-block;
+  background:linear-gradient(135deg,#d4af37,#b8922b);
   color:#fff;
-  font-size:13px;
+  padding:14px 30px;
+  border-radius:40px;
+  text-decoration:none;
+  font-size:16px;
+  margin:10px;
+  border:none;
   cursor:pointer;
 }
 
-/* MAIN */
-main{
-  opacity:0;
-  transition:1s;
-}
-section{
-  padding:90px 24px;
-  position:relative;
-}
-.script{
-  font-family:'Great Vibes',cursive;
-  font-size:44px;
-}
-.date{
-  letter-spacing:3px;
-  font-size:13px;
-  margin-top:12px;
-}
-.title{
-  font-family:'Playfair Display',serif;
-  font-size:26px;
-  margin-bottom:22px;
+.icon{
+  font-size:30px;
+  color:var(--gold);
+  margin-bottom:10px;
 }
 
-/* FLOWER */
-.flower{
-  position:absolute;
-  top:-40px;
-  left:50%;
-  transform:translateX(-50%);
-  opacity:.18;
-  animation:bloom 7s ease-in-out infinite;
-}
-@keyframes bloom{
-  0%,100%{transform:translateX(-50%) scale(.9)}
-  50%{transform:translateX(-50%) scale(1)}
-}
-
-/* COUNTDOWN */
-.countdown{
-  display:flex;
-  justify-content:center;
-  gap:16px;
-  margin-top:32px;
-}
-.countdown div{
-  background:#fff;
-  padding:14px 16px;
-  border-radius:16px;
-  min-width:72px;
-}
-
-/* GALLERY */
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:16px;
-}
-.gallery img{
+input,textarea,select{
   width:100%;
-  border-radius:20px;
-}
-.gallery .big{
-  grid-column:span 2;
-}
-
-/* FORM */
-form input,form textarea,form select{
-  width:100%;
-  padding:13px;
-  margin-bottom:14px;
-  border-radius:14px;
+  padding:12px;
+  margin:8px 0;
+  border-radius:10px;
   border:1px solid #ccc;
-  font-family:inherit;
 }
 
-iframe{
-  width:100%;
-  height:260px;
-  border:0;
-  border-radius:20px;
+.timeline{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  font-size:16px;
 }
 
-footer{
-  padding:60px 20px;
-  font-size:12px;
-  color:#777;
+.message{
+  background:#f5f5f5;
+  padding:12px;
+  border-radius:10px;
+  margin-top:8px;
+  text-align:left;
 }
+
+.countdown{
+  font-size:20px;
+  color:#555;
+  margin-top:10px;
+}
+
+/* FLOWER ANIMATION */
+.flower{
+  position:fixed;
+  width:18px;
+  height:18px;
+  background:rgba(200,162,77,.25);
+  border-radius:50%;
+  top:-20px;
+  animation:fall linear infinite;
+}
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+  }
+}
+
+/* COVER */
+#cover{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(to bottom,#fff,#f4efe6);
+}
+
+.hidden{display:none}
 </style>
 </head>
 
 <body>
 
-<audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio/mpeg">
+<!-- FLOWERS -->
+<script>
+for(let i=0;i<25;i++){
+  const f=document.createElement('div');
+  f.className='flower';
+  f.style.left=Math.random()*100+'%';
+  f.style.animationDuration=5+Math.random()*6+'s';
+  document.body.appendChild(f);
+}
+</script>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+  <source src="music/lagukamu.mp3" type="audio/mpeg">
 </audio>
 
-<!-- OPENING -->
-<div class="opening" id="opening">
-  <div class="opening-box">
-    <p>WEDDING OF</p>
-    <h1>Fendri & Florencia</h1>
-    <div id="guestName"></div>
-    <button class="btn" onclick="openInvitation()">Open Invitation</button>
+<!-- COVER -->
+<section id="cover">
+  <h1>Wedding Of</h1>
+  <h2>Adrianus & Priscillia</h2>
+  <p id="guest"></p>
+  <button class="btn" onclick="openInvite()">Open Invitation</button>
+</section>
+
+<!-- CONTENT -->
+<div id="content" class="hidden">
+
+<!-- COUNTDOWN -->
+<section>
+  <h2>Countdown to Our Day</h2>
+  <div class="countdown" id="countdown"></div>
+</section>
+
+<!-- HOLY MATRIMONY -->
+<section class="card">
+  <div class="icon"><i class="fa-solid fa-cross"></i></div>
+  <h2>Holy Matrimony</h2>
+  <p>Gereja Stella Maris Pluit<br>09.00 AM</p>
+  <a class="btn" href="https://maps.app.goo.gl/Fv3swEi6weJJVksr9" target="_blank">
+    View Location
+  </a>
+</section>
+
+<!-- RECEPTION -->
+<section class="card">
+  <div class="icon"><i class="fa-solid fa-ring"></i></div>
+  <h2>Wedding Reception</h2>
+  <p>Ballroom Royal Jade Lt. 2</p>
+  <a class="btn" href="https://google.com/maps/place/The+Royal+Jade+Restaurant+%26+Function+Hall" target="_blank">
+    View Location
+  </a>
+</section>
+
+<!-- VERSE -->
+<section>
+  <div class="card">
+    <h3>"Therefore what God has joined together, let no one separate."</h3>
+    <p>— Mark 10:9</p>
   </div>
+</section>
+
+<!-- STORY -->
+<section>
+  <h2>Our Story</h2>
+  <div class="card timeline">
+    <div>💍 2019 — We started dating</div>
+    <div>💎 2025 — Engagement</div>
+    <div>🤍 Forever — Together</div>
+  </div>
+</section>
+
+<!-- GUESTBOOK -->
+<section>
+  <h2>Guestbook</h2>
+  <div class="card">
+    <input id="name" placeholder="Your Name">
+    <textarea id="msg" placeholder="Your Wishes"></textarea>
+    <button class="btn" onclick="send()">Send</button>
+    <div id="messages"></div>
+  </div>
+</section>
+
+<!-- GIFT -->
+<section>
+  <h2>Wedding Gift</h2>
+  <div class="card">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=BANK-ACCOUNT-HERE">
+    <p>Scan for transfer</p>
+    <p><i class="fa-solid fa-gift-slash"></i> We kindly do not accept physical gifts</p>
+  </div>
+</section>
+
 </div>
 
-<main id="content">
-
-<section>
-  <img class="flower" src="https://i.imgur.com/6X8Q7xN.png" width="120">
-  <div class="script">Fendri & Florencia</div>
-  <div class="date">12 JUNE 2027</div>
-
-  <div class="countdown">
-    <div><span id="days"></span><br>Days</div>
-    <div><span id="hours"></span><br>Hours</div>
-    <div><span id="minutes"></span><br>Minutes</div>
-    <div><span id="seconds"></span><br>Seconds</div>
-  </div>
-</section>
-
-<section>
-  <div class="title">Holy Matrimony</div>
-  <p>Gereja Stella Maris Pluit<br>09.00 WIB</p>
-  <iframe src="https://www.google.com/maps?q=Gereja+Stella+Maris+Pluit&output=embed"></iframe>
-</section>
-
-<section>
-  <div class="title">Our Moments</div>
-  <div class="gallery">
-    <img class="big" src="https://images.unsplash.com/photo-1519741497674-611481863552">
-    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
-    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc">
-    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
-    <img src="https://images.unsplash.com/photo-1519741497674-611481863552">
-  </div>
-</section>
-
-<section>
-  <div class="title">Guestbook & RSVP</div>
-  <form onsubmit="sendWA(event)">
-    <input id="name" placeholder="Your Name" required>
-    <textarea id="message" placeholder="Your Wishes"></textarea>
-    <select id="attendance">
-      <option>Will Attend</option>
-      <option>Not Attend</option>
-    </select>
-    <select id="guestCount">
-      <option>1 Person</option>
-      <option>2 Persons</option>
-      <option>3 Persons</option>
-      <option>4 Persons</option>
-      <option>5 Persons</option>
-    </select>
-    <button class="btn">Send Confirmation</button>
-  </form>
-</section>
-
-<footer>
-  With Love,<br>Fendri & Florencia
-</footer>
-
-</main>
-
 <script>
-/* GUEST NAME */
-const p=new URLSearchParams(window.location.search);
-const g=p.get("to");
-if(g){
-  document.getElementById("guestName").innerText="Dear "+g.replace(/\+/g," ");
+function openInvite(){
+  document.getElementById('cover').style.display='none';
+  document.getElementById('content').classList.remove('hidden');
+  document.getElementById('music').play();
 }
 
-/* OPEN INVITATION */
-function openInvitation(){
-  document.getElementById("opening").style.display="none";
-  document.getElementById("content").style.opacity=1;
-  document.getElementById("bgMusic").play();
-}
+const params=new URLSearchParams(window.location.search);
+document.getElementById('guest').innerText=params.get('to')||'Dear Guest';
 
-/* COUNTDOWN */
-const target=new Date("June 12, 2027 09:00:00").getTime();
+// COUNTDOWN
+const target=new Date("2026-02-14T09:00:00").getTime();
 setInterval(()=>{
   const now=new Date().getTime();
   const d=target-now;
   if(d<0)return;
-  days.innerText=Math.floor(d/86400000);
-  hours.innerText=Math.floor(d%86400000/3600000);
-  minutes.innerText=Math.floor(d%3600000/60000);
-  seconds.innerText=Math.floor(d%60000/1000);
+  document.getElementById('countdown').innerText=
+    Math.floor(d/86400000)+' Days '+
+    Math.floor(d%86400000/3600000)+' Hours';
 },1000);
 
-/* RSVP */
-function sendWA(e){
-  e.preventDefault();
-  const msg=`RSVP Wedding
-Name: ${name.value}
-Attendance: ${attendance.value}
-Guests: ${guestCount.value}
-Message: ${message.value}`;
-  window.open("https://wa.me/6281808457755?text="+encodeURIComponent(msg));
+// LIVE GUESTBOOK
+const list=document.getElementById('messages');
+function send(){
+  const n=name.value,m=msg.value;
+  if(!n||!m)return;
+  const div=document.createElement('div');
+  div.className='message';
+  div.innerHTML=`<strong>${n}</strong><br>${m}`;
+  list.prepend(div);
+  name.value=msg.value='';
 }
 </script>
 
