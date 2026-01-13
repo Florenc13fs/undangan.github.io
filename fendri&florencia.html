@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fendri & Florencia Wedding</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f9f6f3;
+      color: #4a4a4a;
+    }
+
+    .opening {
+      position: fixed;
+      inset: 0;
+      background: #f9f6f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .card {
+      background: white;
+      padding: 32px;
+      text-align: center;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.1);
+      width: 85%;
+      max-width: 360px;
+    }
+
+    .card h2 {
+      font-family: 'Playfair Display', serif;
+      margin: 12px 0 20px;
+    }
+
+    .card button {
+      padding: 10px 24px;
+      border: none;
+      border-radius: 24px;
+      background: #c6a67a;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    main { display:none; }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+    }
+
+    .hero p {
+      margin-top: 10px;
+      letter-spacing: 1px;
+    }
+
+    .hero span {
+      display: block;
+      margin-top: 14px;
+      color: #c6a67a;
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    section {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .gallery .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .location a {
+      color: #c6a67a;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer {
+      padding: 40px 20px;
+      font-size: 14px;
+    }
+
+    iframe { display:none; }
+  </style>
+</head>
+<body>
+
+<!-- OPENING -->
+<section class="opening">
+  <div class="card" data-aos="fade-up">
+    <p>Kepada Yth</p>
+    <h2 id="guest-name">Tamu Undangan</h2>
+    <button onclick="openInvitation()">Buka Undangan</button>
+  </div>
+</section>
+
+<!-- YOUTUBE MUSIC -->
+<iframe id="ytMusic" allow="autoplay; encrypted-media"></iframe>
+
+<!-- MAIN CONTENT -->
+<main id="content">
+
+  <section class="hero" data-aos="fade-up">
+    <h1>Fendri & Florencia</h1>
+    <p>We Are Getting Married</p>
+    <span>12 Juni 2027</span>
+  </section>
+
+  <section data-aos="fade-up">
+    <h3>Save The Date</h3>
+    <p>Sabtu, 12 Juni 2027</p>
+    <p>Dengan penuh sukacita kami mengundang Bapak/Ibu/Saudara/i</p>
+  </section>
+
+  <section class="gallery" data-aos="fade-up">
+    <h3>Gallery</h3>
+    <div class="grid">
+      <img src="https://picsum.photos/300/300?1">
+      <img src="https://picsum.photos/300/300?2">
+      <img src="https://picsum.photos/300/300?3">
+    </div>
+  </section>
+
+  <section class="location" data-aos="fade-up">
+    <h3>Location</h3>
+    <a href="https://maps.google.com" target="_blank">
+      📍 Lihat di Google Maps
+    </a>
+  </section>
+
+  <footer>
+    <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami 🤍</p>
+  </footer>
+
+</main>
+
+<!-- SCRIPT -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+
+  // Nama tamu dari URL
+  const params = new URLSearchParams(window.location.search);
+  const nama = params.get("to");
+  document.getElementById("guest-name").innerText =
+    nama ? decodeURIComponent(nama) : "Tamu Undangan";
+
+  function openInvitation() {
+    document.querySelector(".opening").style.display = "none";
+    document.getElementById("content").style.display = "block";
+
+    // Play music after click
+    document.getElementById("ytMusic").src =
+      "https://www.youtube.com/embed/vjdNBl8wPMQ?autoplay=1&loop=1&playlist=vjdNBl8wPMQ&controls=0";
+  }
+</script>
+
+</body>
+</html>
