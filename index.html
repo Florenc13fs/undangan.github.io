@@ -1,186 +1,270 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fendri & Florencia Wedding</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fendri & Florencia Wedding</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
-  <!-- AOS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Montserrat',sans-serif;
+  background:#faf7f4;
+  color:#333;
+  text-align:center;
+  overflow-x:hidden;
+}
 
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
+/* OPENING */
+.opening{
+  position:fixed;
+  inset:0;
+  background:url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee") center/cover no-repeat;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:10;
+}
+.opening::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,.78);
+  z-index:1;
+  pointer-events:none; /* FIX TOTAL */
+}
+.opening-box{
+  position:relative;
+  z-index:2;
+  padding:40px;
+}
+.opening p{
+  letter-spacing:4px;
+  font-size:12px;
+}
+.opening h1{
+  font-family:'Great Vibes',cursive;
+  font-size:52px;
+  margin:10px 0;
+}
+#guestName{
+  margin:14px 0 28px;
+  font-size:14px;
+}
+.btn{
+  padding:13px 36px;
+  border:none;
+  border-radius:40px;
+  background:#8c9a7b;
+  color:#fff;
+  font-size:13px;
+  cursor:pointer;
+}
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: #f9f6f3;
-      color: #4a4a4a;
-    }
+/* MAIN */
+main{
+  opacity:0;
+  transition:1s;
+}
+section{
+  padding:90px 24px;
+  position:relative;
+}
+.script{
+  font-family:'Great Vibes',cursive;
+  font-size:44px;
+}
+.date{
+  letter-spacing:3px;
+  font-size:13px;
+  margin-top:12px;
+}
+.title{
+  font-family:'Playfair Display',serif;
+  font-size:26px;
+  margin-bottom:22px;
+}
 
-    .opening {
-      position: fixed;
-      inset: 0;
-      background: #f9f6f3;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10;
-    }
+/* FLOWER */
+.flower{
+  position:absolute;
+  top:-40px;
+  left:50%;
+  transform:translateX(-50%);
+  opacity:.18;
+  animation:bloom 7s ease-in-out infinite;
+}
+@keyframes bloom{
+  0%,100%{transform:translateX(-50%) scale(.9)}
+  50%{transform:translateX(-50%) scale(1)}
+}
 
-    .card {
-      background: white;
-      padding: 32px;
-      text-align: center;
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.1);
-      width: 85%;
-      max-width: 360px;
-    }
+/* COUNTDOWN */
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  margin-top:32px;
+}
+.countdown div{
+  background:#fff;
+  padding:14px 16px;
+  border-radius:16px;
+  min-width:72px;
+}
 
-    .card h2 {
-      font-family: 'Playfair Display', serif;
-      margin: 12px 0 20px;
-    }
+/* GALLERY */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
+.gallery img{
+  width:100%;
+  border-radius:20px;
+}
+.gallery .big{
+  grid-column:span 2;
+}
 
-    .card button {
-      padding: 10px 24px;
-      border: none;
-      border-radius: 24px;
-      background: #c6a67a;
-      color: white;
-      cursor: pointer;
-      font-size: 14px;
-    }
+/* FORM */
+form input,form textarea,form select{
+  width:100%;
+  padding:13px;
+  margin-bottom:14px;
+  border-radius:14px;
+  border:1px solid #ccc;
+  font-family:inherit;
+}
 
-    main { display:none; }
+iframe{
+  width:100%;
+  height:260px;
+  border:0;
+  border-radius:20px;
+}
 
-    .hero {
-      text-align: center;
-      padding: 80px 20px;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 40px;
-    }
-
-    .hero p {
-      margin-top: 10px;
-      letter-spacing: 1px;
-    }
-
-    .hero span {
-      display: block;
-      margin-top: 14px;
-      color: #c6a67a;
-      font-weight: 500;
-      font-size: 15px;
-    }
-
-    section {
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    .gallery .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: 12px;
-    }
-
-    .location a {
-      color: #c6a67a;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    footer {
-      padding: 40px 20px;
-      font-size: 14px;
-    }
-
-    iframe { display:none; }
-  </style>
+footer{
+  padding:60px 20px;
+  font-size:12px;
+  color:#777;
+}
+</style>
 </head>
+
 <body>
 
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 <!-- OPENING -->
-<section class="opening">
-  <div class="card" data-aos="fade-up">
-    <p>Kepada Yth</p>
-    <h2 id="guest-name">Tamu Undangan</h2>
-    <button onclick="openInvitation()">Buka Undangan</button>
+<div class="opening" id="opening">
+  <div class="opening-box">
+    <p>WEDDING OF</p>
+    <h1>Fendri & Florencia</h1>
+    <div id="guestName"></div>
+    <button class="btn" onclick="openInvitation()">Open Invitation</button>
+  </div>
+</div>
+
+<main id="content">
+
+<section>
+  <img class="flower" src="https://i.imgur.com/6X8Q7xN.png" width="120">
+  <div class="script">Fendri & Florencia</div>
+  <div class="date">12 JUNE 2027</div>
+
+  <div class="countdown">
+    <div><span id="days"></span><br>Days</div>
+    <div><span id="hours"></span><br>Hours</div>
+    <div><span id="minutes"></span><br>Minutes</div>
+    <div><span id="seconds"></span><br>Seconds</div>
   </div>
 </section>
 
-<!-- YOUTUBE MUSIC -->
-<iframe id="ytMusic" allow="autoplay; encrypted-media"></iframe>
+<section>
+  <div class="title">Holy Matrimony</div>
+  <p>Gereja Stella Maris Pluit<br>09.00 WIB</p>
+  <iframe src="https://www.google.com/maps?q=Gereja+Stella+Maris+Pluit&output=embed"></iframe>
+</section>
 
-<!-- MAIN CONTENT -->
-<main id="content">
+<section>
+  <div class="title">Our Moments</div>
+  <div class="gallery">
+    <img class="big" src="https://images.unsplash.com/photo-1519741497674-611481863552">
+    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
+    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc">
+    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
+    <img src="https://images.unsplash.com/photo-1519741497674-611481863552">
+  </div>
+</section>
 
-  <section class="hero" data-aos="fade-up">
-    <h1>Fendri & Florencia</h1>
-    <p>We Are Getting Married</p>
-    <span>12 Juni 2027</span>
-  </section>
+<section>
+  <div class="title">Guestbook & RSVP</div>
+  <form onsubmit="sendWA(event)">
+    <input id="name" placeholder="Your Name" required>
+    <textarea id="message" placeholder="Your Wishes"></textarea>
+    <select id="attendance">
+      <option>Will Attend</option>
+      <option>Not Attend</option>
+    </select>
+    <select id="guestCount">
+      <option>1 Person</option>
+      <option>2 Persons</option>
+      <option>3 Persons</option>
+      <option>4 Persons</option>
+      <option>5 Persons</option>
+    </select>
+    <button class="btn">Send Confirmation</button>
+  </form>
+</section>
 
-  <section data-aos="fade-up">
-    <h3>Save The Date</h3>
-    <p>Sabtu, 12 Juni 2027</p>
-    <p>Dengan penuh sukacita kami mengundang Bapak/Ibu/Saudara/i</p>
-  </section>
-
-  <section class="gallery" data-aos="fade-up">
-    <h3>Gallery</h3>
-    <div class="grid">
-      <img src="https://picsum.photos/300/300?1">
-      <img src="https://picsum.photos/300/300?2">
-      <img src="https://picsum.photos/300/300?3">
-    </div>
-  </section>
-
-  <section class="location" data-aos="fade-up">
-    <h3>Location</h3>
-    <a href="https://maps.google.com" target="_blank">
-      📍 Lihat di Google Maps
-    </a>
-  </section>
-
-  <footer>
-    <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami 🤍</p>
-  </footer>
+<footer>
+  With Love,<br>Fendri & Florencia
+</footer>
 
 </main>
 
-<!-- SCRIPT -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init();
+/* GUEST NAME */
+const p=new URLSearchParams(window.location.search);
+const g=p.get("to");
+if(g){
+  document.getElementById("guestName").innerText="Dear "+g.replace(/\+/g," ");
+}
 
-  // Nama tamu dari URL
-  const params = new URLSearchParams(window.location.search);
-  const nama = params.get("to");
-  document.getElementById("guest-name").innerText =
-    nama ? decodeURIComponent(nama) : "Tamu Undangan";
+/* OPEN INVITATION */
+function openInvitation(){
+  document.getElementById("opening").style.display="none";
+  document.getElementById("content").style.opacity=1;
+  document.getElementById("bgMusic").play();
+}
 
-  function openInvitation() {
-    document.querySelector(".opening").style.display = "none";
-    document.getElementById("content").style.display = "block";
+/* COUNTDOWN */
+const target=new Date("June 12, 2027 09:00:00").getTime();
+setInterval(()=>{
+  const now=new Date().getTime();
+  const d=target-now;
+  if(d<0)return;
+  days.innerText=Math.floor(d/86400000);
+  hours.innerText=Math.floor(d%86400000/3600000);
+  minutes.innerText=Math.floor(d%3600000/60000);
+  seconds.innerText=Math.floor(d%60000/1000);
+},1000);
 
-    // Play music after click
-    document.getElementById("ytMusic").src =
-      "https://www.youtube.com/embed/vjdNBl8wPMQ?autoplay=1&loop=1&playlist=vjdNBl8wPMQ&controls=0";
-  }
+/* RSVP */
+function sendWA(e){
+  e.preventDefault();
+  const msg=`RSVP Wedding
+Name: ${name.value}
+Attendance: ${attendance.value}
+Guests: ${guestCount.value}
+Message: ${message.value}`;
+  window.open("https://wa.me/6281808457755?text="+encodeURIComponent(msg));
+}
 </script>
 
 </body>
